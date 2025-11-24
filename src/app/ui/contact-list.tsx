@@ -1,18 +1,14 @@
 import Image from "next/image";
+import { contact } from "@/app/lib/definitions";
+import { fetchContacts } from "@/app/lib/data";
 
-type contact = {
-  id: number;
-  name: string;
-  phone: string;
-  image: string;
-};
-
-export default function ContactsList({ contacts }: { contacts: contact[] }) {
+export default async function ContactsList() {
+  let contacts = await fetchContacts();
   return (
     <ul className="w-full grid grid-cols-2 gap-2">
-      {contacts.map((contact: contact) => {
+      {contacts.map((contact) => {
         return (
-          <li key={contact.id} className="flex flex-row items-center my-2">
+          <li key={contact.phone} className="flex flex-row items-center my-2">
             <Image
               width={60}
               height={60}
