@@ -3,9 +3,9 @@ import { contacts as testContacts } from "@/app/lib/placeholder-data";
 
 export async function GET() {
   try {
-    // let db = await getDb;
-    // let contacts = db.collection("contacts");
-    // await contacts.insertMany(testContacts);
+    let db = await getDb;
+    let contacts = db.collection("contacts");
+    await contacts.insertMany(testContacts);
     return Response.json({ message: "Database seeded successfully" });
   } catch (error) {
     console.log("Database Error : ", error);
